@@ -28,9 +28,7 @@ function nextImage() {
     canImage.erase();
     canOverlay.erase();
     canCorrect.erase();
-    if (!canImage.imageVisible) {
-        canImage.toggleImage();
-    }
+    canImage.imageVisible = true;
     canImage.context.drawImage(imgArray[imgNumber], 50, 50)
 }
 
