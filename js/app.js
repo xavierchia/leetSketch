@@ -12,7 +12,7 @@ imgArray[3].src = "assets/portrait3.png";
 
 // Overlays current drawing to the right image and reduces opacity
 function doneDrawing() {
-    canImage.context.drawImage(imgArray[imgNumber], 0, 0)
+    canImage.context.drawImage(imgArray[imgNumber], 50, 50)
     canImage.changeOpacity(0.3);
     canDraw.overlay(canOverlay);
     canOverlay.changeOpacity(0.5);

@@ -51,7 +51,7 @@ var Canvas = function (canvasID, color = "black") {
 
   // Copies the drawing from this canvas to the target canvas
   this.overlay = function (targetCanvas) {
-    targetCanvas.context.drawImage(this.canvas, 0, 0);
+    targetCanvas.context.drawImage(this.canvas, 50, 50);
   };
 
   // What should happen when the mouse events are different
