@@ -1,0 +1,55 @@
+#canDraw {
+  position: absolute;
+  top: 100px;
+  left: 50px;
+  border: 1px solid black;
+  z-index: 0;
+}
+
+#canImage {
+  position: absolute;
+  top: 100px;
+  left: 500px;
+  border: 1px solid black;
+  z-index: 0;
+}
+
+#canOverlay {
+  position: absolute;
+  top: 100px;
+  left: 500px;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+#canCorrect {
+  position: absolute;
+  top: 100px;
+  left: 500px;
+  border: 1px solid black;
+  z-index: 5;
+}
+
+#tableLeft {
+  position: absolute;
+  top: 100px;
+  left: 50px;
+  width: 402px;
+  height: 402px;
+  border-collapse: collapse;
+  z-index: -1;
+}
+
+#tableRight {
+  position: absolute;
+  top: 100px;
+  left: 500px;
+  width: 402px;
+  height: 402px;
+  border-collapse: collapse;
+  z-index: 2;
+}
+
+td {
+  border: 2px solid black;
+}

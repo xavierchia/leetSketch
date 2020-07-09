@@ -1,17 +1,10 @@
 <!--
-* Refactor code so both canvases get loaded [DONE]
-* Move clear to left [DONE]
-* Move save to right [DONE]
-* Rename save to Done Drawing! [DONE]
-* Add step numbers [DONE]
-* Hide/Unhide Photo button on the right side [DONE]
-* Next Photo button that cycles through images [DONE]
-* Add opacity to image and overlay [DONE]
+
 * Add comments
-* Save image on the right side immediately
 
 * Add grid to both sides 6x6
 
+* Save image on the right side immediately
 * Upload own photo
 
 -->
@@ -29,39 +22,7 @@
 
         gtag('config', 'UA-172013043-1');
     </script>
-    <style>
-        #canDraw {
-            position: absolute;
-            top: 100px;
-            left: 50px;
-            border: 1px solid black;
-            z-index: 0;
-        }
-    
-        #canImage {
-            position: absolute;
-            top: 100px;
-            left: 500px;
-            border: 1px solid black;
-            z-index: 0;
-        }
-    
-        #canOverlay {
-            position: absolute;
-            top: 100px;
-            left: 500px;
-            border: 1px solid black;
-            z-index: 1;
-        }
-    
-        #canCorrect {
-            position: absolute;
-            top: 100px;
-            left: 500px;
-            border: 1px solid black;
-            z-index: 2;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -69,6 +30,24 @@
     <h1>Leet Sketch</h1>
     <div style="position:absolute;top:80px;left:50px;">1. Draw here:</div>
 
+    <!-- Grid left -->
+    <table id="tableLeft">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
     <!-- Buttons left -->
     <input type="button" value="Clear" id="clr" size="23" onclick="canDraw.erase()"
         style="position:absolute;top:480px;left:50px;z-index:3;">
@@ -77,7 +56,24 @@
 
     <!-- Text right -->
     <div style="position:absolute;top:80px;left:500px;">3. Draw corrections</div>
-
+    <!-- Grid right -->
+    <table id="tableRight">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
     <!-- Buttons right -->
     <input type="button" value="Hide / Unhide Photo" id="clr" size="23" onclick="canImage.toggleImage()"
         style="position:absolute;top:480px;left:500px;z-index:3;">
@@ -88,167 +84,23 @@
 
     <!-- Text bottom -->
     <div style="position:absolute;top:520px;">Want more features? Drop me an email at xavier.cpy@gmail.com
+    <br>
+    Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
     </div>
+    
 
 </body>
-
-<script type="text/javascript">
-
-    var Canvas = function (canvasID, color = "black") {
-        this.canvas = document.createElement("canvas");
-        this.canvas.id = canvasID;
-        this.canvas.width = 400;
-        this.canvas.height = 400;
-        this.canvas.style.border = "1px solid";
-        this.canvas.style.position = "absolute";
-        this.context = this.canvas.getContext("2d");
-        this.prevX = 0;
-        this.prevY = 0;
-        this.currX = 0;
-        this.currY = 0;
-        this.flag = false;
-        this.penColor = color;
-        this.penSize = 3;
-        this.imageVisible = true;
-        this.backupImage = false;
-        this.canvas.addEventListener("mousemove", function (e) {
-            this.findxy("move", e)
-        }.bind(this), false);
-        this.canvas.addEventListener("mousedown", function (e) {
-            this.findxy("down", e)
-        }.bind(this), false);
-        this.canvas.addEventListener("mouseup", function (e) {
-            this.findxy("up", e)
-        }.bind(this), false);
-        this.canvas.addEventListener("mouseout", function (e) {
-            this.findxy("out", e)
-        }.bind(this), false);
-
-        this.draw = function () {
-            this.context.beginPath();
-            this.context.lineJoin = "round";
-            this.context.lineCap = "round";
-            this.context.moveTo(this.prevX, this.prevY);
-            this.context.lineTo(this.currX, this.currY);
-            this.context.strokeStyle = this.penColor;
-            this.context.lineWidth = this.penSize;
-            this.context.stroke();
-            this.context.closePath();
-        };
-
-        this.erase = function () {
-            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        };
-
-        this.overlay = function (targetCanvas) {
-            targetCanvas.context.drawImage(this.canvas, 0, 0);
-        };
-
-        this.findxy = function (res, e) {
-            if (res == 'down' && e.button === 0) {
-                this.prevX = this.currX;
-                this.prevY = this.currY;
-                this.currX = e.clientX - this.canvas.offsetLeft;
-                this.currY = e.clientY - this.canvas.offsetTop;
-
-                this.flag = true;
-                this.context.beginPath();
-                this.context.fillStyle = this.penColor;
-                this.context.fillRect(this.currX, this.currY, this.penSize, this.penSize);
-                this.context.closePath();
-            }
-            if (res == 'up' || res == "out") {
-                this.flag = false;
-            }
-            if (res == 'move') {
-                if (this.flag) {
-                    this.prevX = this.currX;
-                    this.prevY = this.currY;
-                    this.currX = e.clientX - this.canvas.offsetLeft;
-                    this.currY = e.clientY - this.canvas.offsetTop;
-                    this.draw();
-                }
-            }
-        };
-
-        this.toggleImage = function () {
-            if (this.imageVisible) {
-                this.backupImage = this.backup();
-                this.erase();
-                this.imageVisible = false;
-            }
-            else {
-                this.context.drawImage(this.backupImage.canvas, 0, 0);
-                this.imageVisible = true;
-            }
-        };
-
-        this.backup = function () {
-            var canBack = new Canvas('canBack');
-            canBack.context.drawImage(this.canvas, 0, 0);
-            return canBack;
-        }
-
-        this.changeOpacity = function (number) {
-            var canBack = this.backup();
-            this.context.save();
-            this.erase();
-            this.context.globalAlpha = number;
-            this.context.drawImage(canBack.canvas, 0, 0);
-            this.context.restore();
-        };
-    }
-
-    var imgArray = [];
-    imgArray[0] = new Image();
-    imgArray[0].src = "portrait0.png";
-    imgArray[1] = new Image();
-    imgArray[1].src = "portrait1.png";
-    imgArray[2] = new Image();
-    imgArray[2].src = "portrait2.png";
-    imgArray[3] = new Image();
-    imgArray[3].src = "portrait3.png";
-
-    function doneDrawing() {
-        canImage.context.drawImage(imgArray[imgNumber], 0, 0)
-        canImage.changeOpacity(0.3);
-        canDraw.overlay(canOverlay);
-        canOverlay.changeOpacity(0.5);
-    }
-
-
-    // Cycles through images in the library 
-    var imgNumber = 0;
-    function nextImage() {
-        imgNumber++;
-        imgNumber = imgNumber % (imgArray.length);
-        canDraw.erase();
-        canImage.erase();
-        canOverlay.erase();
-        canCorrect.erase();
-        if (!canImage.imageVisible) {
-            canImage.toggleImage();
-        }
-        canImage.context.drawImage(imgArray[imgNumber], 0, 0)
-    }
-
-
-    var canDraw = new Canvas("canDraw", "black");
-    document.body.appendChild(canDraw.canvas);
-
-    var canImage = new Canvas("canImage", "black");
-    document.body.appendChild(canImage.canvas);
-
-    var canOverlay = new Canvas("canOverlay", "black");
-    document.body.appendChild(canOverlay.canvas);
-
-    var canCorrect = new Canvas("canCorrect", "red");
-    document.body.appendChild(canCorrect.canvas);
-
-    window.onload = function () {
-        canImage.context.drawImage(imgArray[0], 0, 0)
-    }
-
-</script>
+<script src="./js/canvas.js"></script>
+<script src="./js/app.js"></script>
 
 </html>
+
+<!-- 
+* Refactor code so both canvases get loaded [DONE]
+* Move clear to left [DONE]
+* Move save to right [DONE]
+* Rename save to Done Drawing! [DONE]
+* Add step numbers [DONE]
+* Hide/Unhide Photo button on the right side [DONE]
+* Next Photo button that cycles through images [DONE]
+* Add opacity to image and overlay [DONE] -->
