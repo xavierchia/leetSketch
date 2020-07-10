@@ -27,21 +27,21 @@ var Canvas = function (canvasID, color = "black") {
 	this.upEvent = this.isTouchSupported ? 'touchend' : (this.isPointerSupported ? 'pointerup' : (this.isMSPointerSupported ? 'MSPointerUp' : 'mouseup'));
 	 	  
 	this.canvas.addEventListener(this.downEvent, function (e) {
-    // e.preventDefault();
+    e.preventDefault();
     if (this.isTouchSupported) {
       e = e.targetTouches[0];
     }
     this.findxy("down", e)
   }.bind(this), false);
 	this.canvas.addEventListener(this.moveEvent, function (e) {
-    // e.preventDefault();
+    e.preventDefault();
     if (this.isTouchSupported) {
       e = e.targetTouches[0];
     }
     this.findxy("move", e)
   }.bind(this), false);
 	this.canvas.addEventListener(this.upEvent, function (e) {
-    // e.preventDefault();
+    e.preventDefault();
     if (this.isTouchSupported) {
       e = e.targetTouches[0];
     }
