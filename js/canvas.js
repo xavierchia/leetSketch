@@ -18,7 +18,7 @@ var Canvas = function (canvasID, color = "black") {
   this.imageVisible = true;
   this.backupImage = false;
 
-  // Event listeners only work for desktop mouse at the moment
+  // Event listeners for desktop mouse
   this.canvas.addEventListener("mousemove", function (e) {
     this.findxy("move", e)
   }.bind(this), false);
@@ -31,6 +31,23 @@ var Canvas = function (canvasID, color = "black") {
   this.canvas.addEventListener("mouseout", function (e) {
     this.findxy("out", e)
   }.bind(this), false);
+
+  // Event listeners for touch screens
+  this.canvas.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+    this.findxy("down", e)
+  }.bind(this), false);
+  this.canvas.addEventListener("touchmove", function(e) {
+    e.preventDefault();
+    this.findxy("move", e)
+  }.bind(this), false);
+  this.canvas.addEventListener("touchend", function(e) {
+    this.findxy("up", e)
+  }.bind(this), false);
+  this.canvas.addEventListener("touchcancel", function(e) {
+    this.findxy("out", e)
+  }.bind(this), false);
+
 
   // Drawing when the mouse is being moved after pressed
   this.draw = function () {
@@ -59,6 +76,7 @@ var Canvas = function (canvasID, color = "black") {
 
     // Create a rectangle when the mouse is pressed
     if (res == 'down' && e.button === 0) {
+      e.preventDefault();
       this.prevX = this.currX;
       this.prevY = this.currY;
       this.currX = e.clientX - this.canvas.offsetLeft;
@@ -73,11 +91,13 @@ var Canvas = function (canvasID, color = "black") {
 
     // Mouse is no longer pressed or cursor has left canvas boundary
     if (res == 'up' || res == "out") {
+      e.preventDefault();
       this.isMousePressed = false;
     }
 
     // It should draw if mouse is pressed and mouse is moving
     if (res == 'move') {
+      e.preventDefault();
       if (this.isMousePressed) {
         this.prevX = this.currX;
         this.prevY = this.currY;
