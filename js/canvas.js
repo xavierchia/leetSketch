@@ -47,6 +47,13 @@ var Canvas = function (canvasID, color = "black") {
     }
     this.findxy("up", e)
   }.bind(this), false);
+  
+  // Block right-click menu thru preventing default action.
+  this.canvas.addEventListener('contextmenu', function(e) {
+    if (e.button === 2) {
+      e.preventDefault();
+    }
+  });
 
   // Drawing when the mouse is being moved after pressed
   this.draw = function () {
@@ -88,8 +95,9 @@ var Canvas = function (canvasID, color = "black") {
     }
 
     // Mouse is no longer pressed or cursor has left canvas boundary
-    if (res == 'up' || res == "out") {
+    if (res == 'up') {
       this.isMousePressed = false;
+      doneDrawing();
     }
 
     // It should draw if mouse is pressed and mouse is moving

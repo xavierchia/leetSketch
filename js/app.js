@@ -2,11 +2,11 @@
 // Creating the image array
 var imgArray = [];
 imgArray[0] = new Image();
-imgArray[0].src = "assets/portrait0.png";
+imgArray[0].src = "assets/portrait1.png";
 imgArray[1] = new Image();
-imgArray[1].src = "assets/portrait1.png";
+imgArray[1].src = "assets/portrait2.png";
 imgArray[2] = new Image();
-imgArray[2].src = "assets/portrait2.png";
+imgArray[2].src = "assets/portrait0.png";
 imgArray[3] = new Image();
 imgArray[3].src = "assets/portrait3.png";
 
@@ -56,3 +56,9 @@ window.onload = function () {
 }
 
 
+document.addEventListener('contextmenu', function(e) {
+    if (e.button == 2) {
+      // Block right-click menu thru preventing default action.
+      e.preventDefault();
+    }
+  });
