@@ -55,10 +55,6 @@ window.onload = function () {
     canImage.context.drawImage(imgArray[0], 50, 50)
 }
 
-
-document.addEventListener('contextmenu', function(e) {
-    if (e.button == 2) {
-      // Block right-click menu thru preventing default action.
-      e.preventDefault();
-    }
-  });
+window.onorientationchange = function() {
+    location.reload();
+}
