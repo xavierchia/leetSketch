@@ -12,7 +12,6 @@ var Canvas = function (canvasID, color = "black") {
   this.prevY = 0;
   this.currX = 0;
   this.currY = 0;
-  this.canvasBoundary = this.canvas.getBoundingClientRect();
   this.isMousePressed = false;
   this.penColor = color;
   this.penSize = 3;
@@ -85,8 +84,9 @@ var Canvas = function (canvasID, color = "black") {
     if (res == 'down') {
       this.prevX = this.currX;
       this.prevY = this.currY;
-      this.currX = e.clientX - this.canvasBoundary.left;
-      this.currY = e.clientY - this.canvasBoundary.top;
+      var canvasBoundary = this.canvas.getBoundingClientRect();
+      this.currX = e.clientX - canvasBoundary.left;
+      this.currY = e.clientY - canvasBoundary.top;
 
       this.isMousePressed = true;
       this.context.beginPath();
@@ -106,8 +106,9 @@ var Canvas = function (canvasID, color = "black") {
       if (this.isMousePressed) {
         this.prevX = this.currX;
         this.prevY = this.currY;
-        this.currX = e.clientX - this.canvasBoundary.left;
-        this.currY = e.clientY - this.canvasBoundary.top;
+        var canvasBoundary = this.canvas.getBoundingClientRect();
+        this.currX = e.clientX - canvasBoundary.left;
+        this.currY = e.clientY - canvasBoundary.top;
         this.draw();
       }
     }
