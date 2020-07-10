@@ -105,8 +105,9 @@ var Canvas = function (canvasID, color = "black") {
       if (this.isMousePressed) {
         this.prevX = this.currX;
         this.prevY = this.currY;
-        this.currX = e.clientX - this.canvas.offsetLeft;
-        this.currY = e.clientY - this.canvas.offsetTop;
+        var canvasBoundary = this.canvas.getBoundingClientRect();
+        this.currX = e.clientX - canvasBoundary.left;
+        this.currY = e.clientY - canvasBoundary.top;
         this.draw();
       }
     }

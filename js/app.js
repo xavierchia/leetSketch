@@ -54,7 +54,3 @@ document.body.appendChild(canCorrect.canvas);
 window.onload = function () {
     canImage.context.drawImage(imgArray[0], 50, 50)
 }
-
-window.onorientationchange = function() {
-    location.reload();
-}
