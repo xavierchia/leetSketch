@@ -18,36 +18,35 @@ var Canvas = function (canvasID, color = "black") {
   this.imageVisible = true;
   this.backupImage = false;
 
-  // Event listeners for desktop mouse
-  this.canvas.addEventListener("mousemove", function (e) {
-    this.findxy("move", e)
-  }.bind(this), false);
-  this.canvas.addEventListener("mousedown", function (e) {
+  this.isTouchSupported = 'ontouchstart' in window;
+	this.isPointerSupported = navigator.pointerEnabled;
+	this.isMSPointerSupported =  navigator.msPointerEnabled;
+	
+	this.downEvent = this.isTouchSupported ? 'touchstart' : (this.isPointerSupported ? 'pointerdown' : (this.isMSPointerSupported ? 'MSPointerDown' : 'mousedown'));
+	this.moveEvent = this.isTouchSupported ? 'touchmove' : (this.isPointerSupported ? 'pointermove' : (this.isMSPointerSupported ? 'MSPointerMove' : 'mousemove'));
+	this.upEvent = this.isTouchSupported ? 'touchend' : (this.isPointerSupported ? 'pointerup' : (this.isMSPointerSupported ? 'MSPointerUp' : 'mouseup'));
+	 	  
+	this.canvas.addEventListener(this.downEvent, function (e) {
+    // e.preventDefault();
+    if (this.isTouchSupported) {
+      e = e.targetTouches[0];
+    }
     this.findxy("down", e)
   }.bind(this), false);
-  this.canvas.addEventListener("mouseup", function (e) {
-    this.findxy("up", e)
-  }.bind(this), false);
-  this.canvas.addEventListener("mouseout", function (e) {
-    this.findxy("out", e)
-  }.bind(this), false);
-
-  // Event listeners for touch screens
-  this.canvas.addEventListener("touchstart", function(e) {
-    e.preventDefault();
-    this.findxy("down", e)
-  }.bind(this), false);
-  this.canvas.addEventListener("touchmove", function(e) {
-    e.preventDefault();
+	this.canvas.addEventListener(this.moveEvent, function (e) {
+    // e.preventDefault();
+    if (this.isTouchSupported) {
+      e = e.targetTouches[0];
+    }
     this.findxy("move", e)
   }.bind(this), false);
-  this.canvas.addEventListener("touchend", function(e) {
+	this.canvas.addEventListener(this.upEvent, function (e) {
+    // e.preventDefault();
+    if (this.isTouchSupported) {
+      e = e.targetTouches[0];
+    }
     this.findxy("up", e)
   }.bind(this), false);
-  this.canvas.addEventListener("touchcancel", function(e) {
-    this.findxy("out", e)
-  }.bind(this), false);
-
 
   // Drawing when the mouse is being moved after pressed
   this.draw = function () {
@@ -75,8 +74,7 @@ var Canvas = function (canvasID, color = "black") {
   this.findxy = function (res, e) {
 
     // Create a rectangle when the mouse is pressed
-    if (res == 'down' && e.button === 0) {
-      e.preventDefault();
+    if (res == 'down') {
       this.prevX = this.currX;
       this.prevY = this.currY;
       this.currX = e.clientX - this.canvas.offsetLeft;
@@ -91,13 +89,11 @@ var Canvas = function (canvasID, color = "black") {
 
     // Mouse is no longer pressed or cursor has left canvas boundary
     if (res == 'up' || res == "out") {
-      e.preventDefault();
       this.isMousePressed = false;
     }
 
     // It should draw if mouse is pressed and mouse is moving
     if (res == 'move') {
-      e.preventDefault();
       if (this.isMousePressed) {
         this.prevX = this.currX;
         this.prevY = this.currY;
