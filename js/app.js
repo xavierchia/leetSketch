@@ -57,7 +57,6 @@ function nextImage() {
     canDraw.erase();
     canImage.erase();
     canOverlay.erase();
-    canCorrect.erase();
     canImage.imageVisible = true;
     canDraw.backupImageArray = [];
     canImage.context.drawImage(imgArray[imgNumber], 50, 50)
@@ -77,10 +76,6 @@ document.body.appendChild(canImage.canvas);
 // Canvas to overlay the left drawing on the right image
 var canOverlay = new Canvas("canOverlay", "black");
 document.body.appendChild(canOverlay.canvas);
-
-// Canvas to do corrections on the right overlay
-var canCorrect = new Canvas("canCorrect", "red");
-document.body.appendChild(canCorrect.canvas);
 
 window.onload = function () {
     canImage.context.drawImage(imgArray[0], 50, 50)

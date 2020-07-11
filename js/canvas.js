@@ -14,7 +14,7 @@ var Canvas = function (canvasID, color = "black") {
   this.currY = 0;
   this.isMousePressed = false;
   this.penColor = color;
-  this.penSize = 3;
+  this.penSize = 8;
   this.imageVisible = true;
   this.backupImage = false;
   this.backupImageArray = [];
@@ -91,10 +91,6 @@ var Canvas = function (canvasID, color = "black") {
       this.currY = e.clientY - canvasBoundary.top;
 
       this.isMousePressed = true;
-      this.context.beginPath();
-      this.context.fillStyle = this.penColor;
-      this.context.fillRect(this.currX, this.currY, this.penSize, this.penSize);
-      this.context.closePath();
     }
 
     // Mouse is no longer pressed or cursor has left canvas boundary
