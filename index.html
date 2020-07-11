@@ -8,6 +8,8 @@
 * Compile features
 * Add personal notes to features
 * Prioritize features
+* Draw to overlay instantly [DONE]
+
 
 
 * Add readme
@@ -57,8 +59,10 @@
         </tr>
     </table>
     <!-- Buttons left -->
-    <input type="button" value="Clear" onclick="canDraw.erase()"
-        style="position:absolute;top:480px;left:50px;z-index:3;">
+    <input type="button" value="CLEAR" onclick="clearAll()"
+        style="position:absolute;top:470px;left:50px;z-index:3;">
+    <input type="button" value="UNDO" onclick="undo()"
+        style="position:absolute;top:470px;left:375px;z-index:3;">
 
     <!-- Text right -->
     <div style="position:absolute;top:80px;left:500px;">2. Draw corrections</div>
@@ -81,10 +85,6 @@
         </tr>
     </table>
     <!-- Buttons right -->
-    <input type="button" value="Hide / Unhide Photo" onclick="canImage.toggleImage()"
-        style="position:absolute;top:480px;left:500px;z-index:10;">
-    <input type="button" value="3. Save Your Masterpiece" onclick="erase()"
-        style="position:absolute;top:480px;left:735px;z-index:10;">
     <input type="button" value="4. Next Photo :)" onclick="nextImage()"
         style="position:absolute;top:300px;left:920px;z-index:10;">
 

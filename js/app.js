@@ -2,13 +2,43 @@
 // Creating the image array
 var imgArray = [];
 imgArray[0] = new Image();
-imgArray[0].src = "assets/portrait1.png";
+imgArray[0].src = "assets/icecream.png";
 imgArray[1] = new Image();
-imgArray[1].src = "assets/portrait2.png";
+imgArray[1].src = "assets/icecream2.png";
 imgArray[2] = new Image();
-imgArray[2].src = "assets/portrait0.png";
+imgArray[2].src = "assets/icecream3.png";
 imgArray[3] = new Image();
-imgArray[3].src = "assets/portrait3.png";
+imgArray[3].src = "assets/smile.png";
+imgArray[4] = new Image();
+imgArray[4].src = "assets/apple.png";
+imgArray[5] = new Image();
+imgArray[5].src = "assets/peach.png";
+imgArray[6] = new Image();
+imgArray[6].src = "assets/cake.png";
+imgArray[7] = new Image();
+imgArray[7].src = "assets/cup.png";
+imgArray[8] = new Image();
+imgArray[8].src = "assets/heart.png";
+imgArray[9] = new Image();
+imgArray[9].src = "assets/idea.png";
+imgArray[10] = new Image();
+imgArray[10].src = "assets/spoon.png";
+imgArray[11] = new Image();
+imgArray[11].src = "assets/cupcake.png";
+
+// Clears both canvas
+function clearAll() {
+    canDraw.erase();
+    canOverlay.erase();
+}
+
+// Last drawing to go back to
+function undo() {
+    canDraw.erase();
+    canOverlay.erase();
+    canDraw.context.drawImage(canDraw.backupImageArray.pop().canvas, 0, 0);
+    doneDrawing();
+}
 
 // Overlays current drawing to the right image and reduces opacity
 function doneDrawing() {
@@ -29,6 +59,7 @@ function nextImage() {
     canOverlay.erase();
     canCorrect.erase();
     canImage.imageVisible = true;
+    canDraw.backupImageArray = [];
     canImage.context.drawImage(imgArray[imgNumber], 50, 50)
 }
 

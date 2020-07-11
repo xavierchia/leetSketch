@@ -17,39 +17,40 @@ var Canvas = function (canvasID, color = "black") {
   this.penSize = 3;
   this.imageVisible = true;
   this.backupImage = false;
+  this.backupImageArray = [];
 
   this.isTouchSupported = 'ontouchstart' in window;
-	this.isPointerSupported = navigator.pointerEnabled;
-	this.isMSPointerSupported =  navigator.msPointerEnabled;
-	
-	this.downEvent = this.isTouchSupported ? 'touchstart' : (this.isPointerSupported ? 'pointerdown' : (this.isMSPointerSupported ? 'MSPointerDown' : 'mousedown'));
-	this.moveEvent = this.isTouchSupported ? 'touchmove' : (this.isPointerSupported ? 'pointermove' : (this.isMSPointerSupported ? 'MSPointerMove' : 'mousemove'));
-	this.upEvent = this.isTouchSupported ? 'touchend' : (this.isPointerSupported ? 'pointerup' : (this.isMSPointerSupported ? 'MSPointerUp' : 'mouseup'));
-	 	  
-	this.canvas.addEventListener(this.downEvent, function (e) {
+  this.isPointerSupported = navigator.pointerEnabled;
+  this.isMSPointerSupported = navigator.msPointerEnabled;
+
+  this.downEvent = this.isTouchSupported ? 'touchstart' : (this.isPointerSupported ? 'pointerdown' : (this.isMSPointerSupported ? 'MSPointerDown' : 'mousedown'));
+  this.moveEvent = this.isTouchSupported ? 'touchmove' : (this.isPointerSupported ? 'pointermove' : (this.isMSPointerSupported ? 'MSPointerMove' : 'mousemove'));
+  this.upEvent = this.isTouchSupported ? 'touchend' : (this.isPointerSupported ? 'pointerup' : (this.isMSPointerSupported ? 'MSPointerUp' : 'mouseup'));
+
+  this.canvas.addEventListener(this.downEvent, function (e) {
     e.preventDefault();
     if (this.isTouchSupported) {
       e = e.targetTouches[0];
     }
     this.findxy("down", e)
   }.bind(this), false);
-	this.canvas.addEventListener(this.moveEvent, function (e) {
+  this.canvas.addEventListener(this.moveEvent, function (e) {
     e.preventDefault();
     if (this.isTouchSupported) {
       e = e.targetTouches[0];
     }
     this.findxy("move", e)
   }.bind(this), false);
-	this.canvas.addEventListener(this.upEvent, function (e) {
+  this.canvas.addEventListener(this.upEvent, function (e) {
     e.preventDefault();
     if (this.isTouchSupported) {
       e = e.targetTouches[0];
     }
     this.findxy("up", e)
   }.bind(this), false);
-  
+
   // Block right-click menu thru preventing default action.
-  this.canvas.addEventListener('contextmenu', function(e) {
+  this.canvas.addEventListener('contextmenu', function (e) {
     if (e.button === 2) {
       e.preventDefault();
     }
@@ -82,6 +83,7 @@ var Canvas = function (canvasID, color = "black") {
 
     // Create a rectangle when the mouse is pressed
     if (res == 'down') {
+      this.backupImageArray.push(this.backup());
       this.prevX = this.currX;
       this.prevY = this.currY;
       var canvasBoundary = this.canvas.getBoundingClientRect();
