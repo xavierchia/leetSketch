@@ -38,10 +38,10 @@
 <body>
     <!-- Text left -->
     <h1>Leet Sketch</h1>
-    <div style="position:absolute;top:80px;left:50px;">1. Draw here:</div>
+    <div style="position:absolute;top:140px;left:50px;">Draw here:</div>
 
     <!-- Grid left -->
-    <table id="tableLeft">
+    <table id="gridLeft">
         <tr>
             <td></td>
             <td></td>
@@ -58,16 +58,18 @@
             <td></td>
         </tr>
     </table>
-    <!-- Buttons left -->
-    <input type="button" value="CLEAR" onclick="clearAll()"
-        style="position:absolute;top:470px;left:50px;z-index:3;">
-    <input type="button" value="UNDO" onclick="undo()"
-        style="position:absolute;top:470px;left:375px;z-index:3;">
 
-    <!-- Text right -->
-    <div style="position:absolute;top:80px;left:500px;">2. Draw corrections</div>
+    <!-- Radio Buttons left -->
+    <input type="radio" checked="checked" id="levelOne" onclick="levelOne()" name="level">Level 1: Tracing<br>
+    <input type="radio" id="levelTwo" onclick="levelTwo()" name="level">Level 2: Lines<br>
+    <input type="radio" id="levelThree" onclick="levelThree()" name="level">Level 3: No Grid
+
+    <!-- Buttons left -->
+    <button onclick="clearAll()" style="position:absolute;top:530px;left:50px;z-index:3;">CLEAR</button>
+    <button onclick="undo()" style="position:absolute;top:530px;left:375px;z-index:3;">UNDO</button>
+
     <!-- Grid right -->
-    <table id="tableRight">
+    <table id="gridRight">
         <tr>
             <td></td>
             <td></td>
@@ -85,15 +87,15 @@
         </tr>
     </table>
     <!-- Buttons right -->
-    <input type="button" value="4. Next Photo :)" onclick="nextImage()"
-        style="position:absolute;top:300px;left:920px;z-index:10;">
+    <button onclick="nextImage()" style="position:absolute;top:360px;left:920px;z-index:10;">Next Photo :)</button>
 
     <!-- Text bottom -->
-    <div style="position:absolute;top:520px;">Want more features? Drop me an email at xavier.cpy@gmail.com
-    <br>
-    Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+    <div style="position:absolute;top:580px;">Want more features? Drop me an email at xavier.cpy@gmail.com
+        <br>
+        Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a
+            href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
     </div>
-    
+
 
 </body>
 <script src="./js/canvas.js"></script>

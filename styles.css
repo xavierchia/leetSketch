@@ -3,55 +3,46 @@
   font-size: 20px;
 }
 
-#canDraw {
+button {
+  white-space: nowrap;
+}
+
+canvas {
   position: absolute;
-  top: 100px;
-  left: 50px;
+  top: 160px;
   border: 1px solid black;
+}
+
+#canDraw {
+  left: 50px;
   z-index: 0;
 }
 
 #canImage {
-  position: absolute;
-  top: 100px;
   left: 500px;
-  border: 1px solid black;
   z-index: 0;
 }
 
 #canOverlay {
-  position: absolute;
-  top: 100px;
   left: 500px;
-  border: 1px solid black;
   z-index: 1;
 }
 
-#canCorrect {
+table {
   position: absolute;
-  top: 100px;
-  left: 500px;
-  border: 1px solid black;
-  z-index: 5;
-}
-
-#tableLeft {
-  position: absolute;
-  top: 100px;
-  left: 50px;
+  top: 160px;
   width: 402px;
   height: 402px;
   border-collapse: collapse;
+}
+
+#gridLeft {
+  left: 50px;
   z-index: -1;
 }
 
-#tableRight {
-  position: absolute;
-  top: 100px;
+#gridRight {
   left: 500px;
-  width: 402px;
-  height: 402px;
-  border-collapse: collapse;
   z-index: 2;
 }
 

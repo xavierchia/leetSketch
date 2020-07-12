@@ -18,6 +18,9 @@ var Canvas = function (canvasID, color = "black") {
   this.imageVisible = true;
   this.backupImage = false;
   this.backupImageArray = [];
+  this.level = 1;
+
+  // Adding event listeners for mouse, touch, and pointer
 
   this.isTouchSupported = 'ontouchstart' in window;
   this.isPointerSupported = navigator.pointerEnabled;
@@ -49,14 +52,14 @@ var Canvas = function (canvasID, color = "black") {
     this.findxy("up", e)
   }.bind(this), false);
 
-  // Block right-click menu thru preventing default action.
+  // Block right-click menu by preventing default action.
   this.canvas.addEventListener('contextmenu', function (e) {
     if (e.button === 2) {
       e.preventDefault();
     }
   });
 
-  // Drawing when the mouse is being moved after pressed
+  // Drawing when the mouse/touch is being moved after pressed
   this.draw = function () {
     this.context.beginPath();
     this.context.lineJoin = "round";
@@ -78,10 +81,10 @@ var Canvas = function (canvasID, color = "black") {
     targetCanvas.context.drawImage(this.canvas, 0, 0);
   };
 
-  // What should happen when the mouse events are different
+  // What should happen when the mouse/touch events are different
   this.findxy = function (res, e) {
 
-    // Create a rectangle when the mouse is pressed
+    // Update coordinates when the mouse/touch is pressed
     if (res == 'down') {
       this.backupImageArray.push(this.backup());
       this.prevX = this.currX;
@@ -91,15 +94,19 @@ var Canvas = function (canvasID, color = "black") {
       this.currY = e.clientY - canvasBoundary.top;
 
       this.isMousePressed = true;
+      this.context.beginPath();
+      this.context.fillStyle = this.penColor;
+      this.context.fillRect(this.currX, this.currY, this.penSize, this.penSize);
+      this.context.closePath();
     }
 
-    // Mouse is no longer pressed or cursor has left canvas boundary
+    // Mouse/touch is no longer pressed
     if (res == 'up') {
       this.isMousePressed = false;
-      doneDrawing();
+      if (this.level === 2 || this.level === 3) doneDrawing();
     }
 
-    // It should draw if mouse is pressed and mouse is moving
+    // It should draw if mouse/touch is pressed and is moving
     if (res == 'move') {
       if (this.isMousePressed) {
         this.prevX = this.currX;
@@ -108,6 +115,7 @@ var Canvas = function (canvasID, color = "black") {
         this.currX = e.clientX - canvasBoundary.left;
         this.currY = e.clientY - canvasBoundary.top;
         this.draw();
+        if (this.level === 1) doneDrawing();
       }
     }
   };

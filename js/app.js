@@ -40,6 +40,27 @@ function undo() {
     doneDrawing();
 }
 
+// Level 1 traces the drawing
+function levelOne() {
+    canDraw.level = 1;
+    document.getElementById("gridLeft").style.display = "table";
+    document.getElementById("gridRight").style.display = "table";
+}
+
+// Level 2 transfer the drawing by line
+function levelTwo() {
+    canDraw.level = 2;
+    document.getElementById("gridLeft").style.display = "table";
+    document.getElementById("gridRight").style.display = "table";
+}
+
+// Level 3 toggles the grid
+function levelThree() {
+    canDraw.level = 3;
+    document.getElementById("gridLeft").style.display = "none";
+    document.getElementById("gridRight").style.display = "none";
+}
+
 // Overlays current drawing to the right image and reduces opacity
 function doneDrawing() {
     canImage.context.drawImage(imgArray[imgNumber], 50, 50)
