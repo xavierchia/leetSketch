@@ -28,20 +28,22 @@ canvas {
   z-index: 1;
 }
 
-table {
+#gridLeft {
   position: absolute;
   top: 160px;
   width: 402px;
   height: 402px;
   border-collapse: collapse;
-}
-
-#gridLeft {
   left: 50px;
   z-index: -1;
 }
 
 #gridRight {
+  position: absolute;
+  top: 160px;
+  width: 402px;
+  height: 402px;
+  border-collapse: collapse;
   left: 500px;
   z-index: 2;
 }
