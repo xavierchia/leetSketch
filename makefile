@@ -8,4 +8,4 @@ git:
 	git checkout master
 	
 # In terminal, type this to run the sequence above:	
-# make git m = "your message"
+# make git m="your message"
