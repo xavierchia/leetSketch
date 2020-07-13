@@ -11,7 +11,7 @@
 A simple application to help my girlfriend Ally learn sketching. 
 
 ### Requirements:
-1. It should provide feedback on your drawing. [WIP]
+1. It should provide feedback on your drawing. [DONE]
 2. It should have a grid option. [DONE]
 3. It should let you upload your own photo. [WIP]
 

@@ -101,7 +101,3 @@ document.body.appendChild(canOverlay.canvas);
 window.onload = function () {
     canImage.context.drawImage(imgArray[0], 50, 50)
 }
-
-// if (window.innerHeight > window.innerWidth) {
-//     alert("Please rotate me to landscape for a better experience :D");
-// }

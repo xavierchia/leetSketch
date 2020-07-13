@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +11,7 @@
         gtag('js', new Date());
         gtag('config', 'UA-172013043-1');
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width' />
@@ -23,13 +22,13 @@
 
     <!-- Request user to rotate to landscape if in portrait -->
     <div id="rotateModal">
-    <div class="phone">TILT ME :D
-    </div>
+        <div class="phone">TILT ME :D
+        </div>
     </div>
 
     <!-- Text left -->
     <h1>LEET SKETCH</h1>
-    <div style="position:absolute;top:135px;left:50px;">Draw here:</div>
+    <div style="position:absolute;top:125px;left:600px;white-space:nowrap;">*** DRAW HERE ***</div>
 
     <!-- Grid left -->
     <table id="gridLeft">
@@ -55,10 +54,6 @@
     <input type="radio" id="levelTwo" onclick="levelTwo()" name="level">Level 2: Trace with Delay<br>
     <input type="radio" id="levelThree" onclick="levelThree()" name="level">Level 3: No Grid
 
-    <!-- Buttons left -->
-    <button onclick="clearAll()" style="position:absolute;top:530px;left:50px;z-index:3;"><span>CLEAR</span></button>
-    <button onclick="undo()" style="position:absolute;top:530px;left:375px;z-index:3;"><span>UNDO</span></button>
-
     <!-- Grid right -->
     <table id="gridRight">
         <tr>
@@ -79,13 +74,18 @@
     </table>
 
     <!-- Buttons right -->
-    <button onclick="nextImage()" style="position:absolute;top:360px;left:920px;z-index:10;"><span>Next Photo :)</span></button>
+    <button onclick="clearAll()" style="position:absolute;top:530px;left:500px;z-index:5;"><span>CLEAR</span></button>
+    <button onclick="undo()" style="position:absolute;top:530px;left:835px;z-index:5;"><span>UNDO</span></button>
+
+    <!-- Button far right -->
+    <button onclick="nextImage()" style="position:absolute;top:360px;left:920px;z-index:10;"><span>Next Photo
+            :)</span></button>
 
     <!-- Text bottom -->
-    <div style="position:absolute;top:580px;">Want more features? Drop me an email at xavier.cpy@gmail.com
-        <br>
-        Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a
-            href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+    <div style="position:absolute;top:600px;">Want more features? Drop me an email at xavier.cpy@gmail.com
+    <br>
+    Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from
+    <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
     </div>
 
 </body>
