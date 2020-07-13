@@ -7,3 +7,5 @@ git:
 	git push origin gh-pages
 	git checkout master
 	
+# In terminal, type this to run the sequence above:	
+# make git m = "your message"

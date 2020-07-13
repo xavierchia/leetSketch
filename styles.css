@@ -79,12 +79,13 @@ td {
     border: 10px solid black;
     border-radius: 30px;
     margin: 40% 32%;
-    animation: rotate 1.5s ease-in-out infinite alternate;
+    animation: rotate 3s ease-in-out;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
     display: block;
     color: black;
     font-size: 100px;
     font-family: monospace;
-    transform: rotate(90deg);
     line-height: 1.5;
     padding: 30px;
   }
