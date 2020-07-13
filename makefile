@@ -4,7 +4,7 @@ git:
 	git push origin master
 	git checkout gh-pages
 	git rebase master
-	git push origin gh-pages
+	git push -f origin gh-pages
 	git checkout master
 	
 # In terminal, type this to run the sequence above:	
