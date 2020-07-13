@@ -96,14 +96,15 @@ var Canvas = function (canvasID, color = "black") {
       this.isMousePressed = true;
       this.context.beginPath();
       this.context.fillStyle = this.penColor;
-      this.context.fillRect(this.currX, this.currY, this.penSize, this.penSize);
+      this.context.fillRect(this.currX-4, this.currY-4, this.penSize, this.penSize);
       this.context.closePath();
+      if (this.level === 1) doneDrawing();
     }
 
     // Mouse/touch is no longer pressed
     if (res == 'up') {
       this.isMousePressed = false;
-      if (this.level === 2 || this.level === 3) doneDrawing();
+      if (this.level !== 1) doneDrawing();
     }
 
     // It should draw if mouse/touch is pressed and is moving

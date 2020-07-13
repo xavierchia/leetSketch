@@ -1,22 +1,4 @@
-<!--
 
-* Add comments [DONE]
-* Add grid to both sides 3x3 [DONE]
-* Organized files [DONE]
-
-* Create Trello board for features
-* Compile features
-* Add personal notes to features
-* Prioritize features
-* Draw to overlay instantly [DONE]
-
-
-
-* Add readme
-* Save image on the right side immediately
-* Upload own photo
-
--->
 <!DOCTYPE html>
 <html>
 
@@ -30,14 +12,16 @@
         gtag('js', new Date());
         gtag('config', 'UA-172013043-1');
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">   
     <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
-    <title>leetSketch</title>
+    <meta name='viewport' content='width=device-width' />
+    <title>LEET SKETCH</title>
 </head>
 
 <body>
     <!-- Text left -->
-    <h1>Leet Sketch</h1>
+    <h1>LEET SKETCH</h1>
     <div style="position:absolute;top:140px;left:50px;">Draw here:</div>
 
     <!-- Grid left -->
@@ -60,13 +44,13 @@
     </table>
 
     <!-- Radio Buttons left -->
-    <input type="radio" checked="checked" id="levelOne" onclick="levelOne()" name="level">Level 1: Tracing<br>
-    <input type="radio" id="levelTwo" onclick="levelTwo()" name="level">Level 2: Lines<br>
+    <input type="radio" checked="checked" id="levelOne" onclick="levelOne()" name="level">Level 1: Trace<br>
+    <input type="radio" id="levelTwo" onclick="levelTwo()" name="level">Level 2: Trace with Delay<br>
     <input type="radio" id="levelThree" onclick="levelThree()" name="level">Level 3: No Grid
 
     <!-- Buttons left -->
-    <button onclick="clearAll()" style="position:absolute;top:530px;left:50px;z-index:3;">CLEAR</button>
-    <button onclick="undo()" style="position:absolute;top:530px;left:375px;z-index:3;">UNDO</button>
+    <button onclick="clearAll()" style="position:absolute;top:530px;left:50px;z-index:3;"><span>CLEAR</span></button>
+    <button onclick="undo()" style="position:absolute;top:530px;left:375px;z-index:3;"><span>UNDO</span></button>
 
     <!-- Grid right -->
     <table id="gridRight">
@@ -87,7 +71,7 @@
         </tr>
     </table>
     <!-- Buttons right -->
-    <button onclick="nextImage()" style="position:absolute;top:360px;left:920px;z-index:10;">Next Photo :)</button>
+    <button onclick="nextImage()" style="position:absolute;top:360px;left:920px;z-index:10;"><span>Next Photo :)</span></button>
 
     <!-- Text bottom -->
     <div style="position:absolute;top:580px;">Want more features? Drop me an email at xavier.cpy@gmail.com
@@ -102,13 +86,3 @@
 <script src="./js/app.js"></script>
 
 </html>
-
-<!-- 
-* Refactor code so both canvases get loaded [DONE]
-* Move clear to left [DONE]
-* Move save to right [DONE]
-* Rename save to Done Drawing! [DONE]
-* Add step numbers [DONE]
-* Hide/Unhide Photo button on the right side [DONE]
-* Next Photo button that cycles through images [DONE]
-* Add opacity to image and overlay [DONE] -->
