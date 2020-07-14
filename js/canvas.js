@@ -105,6 +105,7 @@ var Canvas = function (canvasID, color = "black") {
     if (res == 'up') {
       this.isMousePressed = false;
       if (this.level !== 1) doneDrawing();
+      document.getElementById("score").innerText = score() + ' Points';
     }
 
     // It should draw if mouse/touch is pressed and is moving
