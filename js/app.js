@@ -31,6 +31,7 @@ imgArray[11].src = "assets/cupcake.png";
 function clearAll() {
     canDraw.erase();
     canOverlay.erase();
+    updateScore();
 }
 
 // Last drawing to go back to
@@ -39,6 +40,7 @@ function undo() {
     canOverlay.erase();
     canDraw.context.drawImage(canDraw.backupImageArray.pop().canvas, 0, 0);
     doneDrawing();
+    updateScore();
 }
 
 // Level 1 traces the drawing
@@ -82,10 +84,10 @@ function nextImage() {
     canImage.imageVisible = true;
     canDraw.backupImageArray = [];
     canImage.context.drawImage(imgArray[imgNumber], 50, 50)
-    document.getElementById("score").innerText = "0 Points";
+    updateScore();
 }
 
-function score() {
+function updateScore() {
     var imageData = canImage.context.getImageData(0,0,400,400).data;
     var drawData = canDraw.context.getImageData(0,0,400,400).data;
 
@@ -98,7 +100,7 @@ function score() {
             counter--;
         }
     }
-    return counter;
+    document.getElementById("score").innerText = counter + ' Points';
 }
 
 
