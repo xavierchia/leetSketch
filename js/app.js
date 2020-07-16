@@ -88,19 +88,25 @@ function nextImage() {
 }
 
 function updateScore() {
-    var imageData = canImage.context.getImageData(0,0,400,400).data;
-    var drawData = canDraw.context.getImageData(0,0,400,400).data;
+    var imageData = canImage.context.getImageData(0, 0, 400, 400).data;
+    var drawData = canDraw.context.getImageData(0, 0, 400, 400).data;
 
-    var counter = 0;
-    for(var i = 0; i < imageData.length; i++) {
+    var imageCounter = 0;
+    var matchCounter = 0;
+    for (var i = 0; i < imageData.length; i++) {
         if (imageData[i] === 77 && drawData[i] === 255) {
-            counter++;
+            matchCounter++;
         }
         if (imageData[i] === 0 && drawData[i] === 255) {
-            counter--;
+            matchCounter--;
+        }
+        if (imageData[i] === 77) {
+            imageCounter++;
         }
     }
-    document.getElementById("score").innerText = counter + ' Points';
+
+    var percentageMatch = (matchCounter / imageCounter * 100).toFixed(0).toString().padStart(2, '0');
+    document.getElementById("score").innerText = percentageMatch + '%';
 }
 
 
@@ -109,18 +115,32 @@ function updateScore() {
 
 // Canvas for drawing on the left
 var canDraw = new Canvas("canDraw", "black");
-document.body.appendChild(canDraw.canvas);
+document.getElementById('drawColumn').appendChild(canDraw.canvas);
 
 // Canvas to draw the image on the right
 var canImage = new Canvas("canImage", "black");
-document.body.appendChild(canImage.canvas);
+document.getElementById('imageColumn').appendChild(canImage.canvas);
 
 // Canvas to overlay the left drawing on the right image
 var canOverlay = new Canvas("canOverlay", "black");
-document.body.appendChild(canOverlay.canvas);
+document.getElementById('imageColumn').appendChild(canOverlay.canvas);
 
 window.onload = function () {
     canImage.context.drawImage(imgArray[0], 50, 50)
-    document.getElementById("score").innerText = "0 Points";
 }
 
+// Scaling for mobile phones on portrait
+if (screen.width < 760 && window.innerHeight > window.innerWidth) {
+    document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=0.9");
+}
+if (screen.width < 361 && window.innerHeight > window.innerWidth) {
+    document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=0.7");
+}
+
+// Scaling for mobile phones on landscape
+if (screen.width < 1000 && window.innerWidth > window.innerHeight) {
+    document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=0.9");
+}
+if (screen.width < 680 && window.innerWidth > window.innerHeight) {
+    document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=0.7");
+}

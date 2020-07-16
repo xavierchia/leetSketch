@@ -2,50 +2,47 @@
 * {
   font-size: 20px;
   font-family: monospace;
+  padding: 0;
+  margin: 0;
+
+}
+.columns {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-button {
-  white-space: nowrap;
+.column {
+  display: flex;
+  position: relative;
 }
 
-canvas {
-  position: absolute;
-  top: 160px;
-  border: 1px solid black;
-}
-
+/* Right box */
 #canDraw {
-  left: 500px;
   z-index: 4;
 }
 
+#gridRight {
+  width: 402px;
+  height: 402px;
+  border-collapse: collapse;
+  z-index: 2;
+}
+
+/* Left box */
+
 #canImage {
-  left: 50px;
   z-index: 0;
 }
 
 #canOverlay {
-  left: 50px;
   z-index: 1;
 }
 
 #gridLeft {
-  position: absolute;
-  top: 160px;
   width: 402px;
   height: 402px;
   border-collapse: collapse;
-  left: 50px;
-  z-index: 2;
-}
-
-#gridRight {
-  position: absolute;
-  top: 160px;
-  width: 402px;
-  height: 402px;
-  border-collapse: collapse;
-  left: 500px;
   z-index: 2;
 }
 
@@ -53,12 +50,3 @@ td {
   border: 2px solid black;
 }
 
-#landscapePrompt {
-  display: none;
-}
-
-@media only screen and (orientation: portrait) {
-  #landscapePrompt {
-    display: block;
-  }
-}

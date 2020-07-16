@@ -11,82 +11,93 @@
         gtag('js', new Date());
         gtag('config', 'UA-172013043-1');
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
     <title>LEET SKETCH</title>
 </head>
 
 <body>
 
-    <!-- Text left -->
-    <h1>LEET SKETCH</h1>
-    <div style="position:absolute;top:125px;left:600px;white-space:nowrap;">*** DRAW HERE ***</div>
+    <!-- Text top -->
+    <div>LEET SKETCH</div>
 
-    <!-- Grid left -->
-    <table id="gridLeft">
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
 
-    <!-- Radio Buttons left -->
-    <input type="radio" checked="checked" id="levelOne" onclick="levelOne()" name="level">Level 1: Trace<br>
-    <input type="radio" id="levelTwo" onclick="levelTwo()" name="level">Level 2: Trace w Delay<br>
-    <input type="radio" id="levelThree" onclick="levelThree()" name="level">Level 3: No Grid
+    <!-- Radio Buttons top -->
+    <div>
+        <input type="radio" checked="checked" id="levelOne" onclick="levelOne()" name="level">Level 1: Trace<br>
+        <input type="radio" id="levelTwo" onclick="levelTwo()" name="level">Level 2: Trace w Delay<br>
+        <input type="radio" id="levelThree" onclick="levelThree()" name="level">Level 3: No Grid
+    </div>
 
-    <!-- Grid right -->
-    <table id="gridRight">
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
+    <div class="columns">
+        <div id="imageColumn" class="column">
 
-    <!-- Buttons right -->
-    <button onclick="clearAll()" style="position:absolute;top:530px;left:500px;z-index:5;"><span>CLEAR</span></button>
-    <button onclick="undo()" style="position:absolute;top:530px;left:835px;z-index:5;"><span>UNDO</span></button>
+            <!-- Grid left -->
+            <table id="gridLeft">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
 
-    <!-- Button far right -->
-    <button onclick="nextImage()" style="position:absolute;top:360px;left:920px;z-index:10;"><span>Next Photo
-            :)</span></button>
+        <div id="drawColumn" class="column">
 
-    <!-- Score -->
-    <div id="score" style="position:absolute;top:600px;left:420px;font-size:25px;">
+            <!-- Text Right -->
+            <!-- <div style="position:relative;left:50%;margin-left:-130px;font-size:25px;">*** DRAW HERE &#9997 ***</div> -->
+
+            <!-- Grid right -->
+            <table id="gridRight">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+
+            <!-- Buttons right -->
+            <button onclick="clearAll()" style="position:absolute;top:375px;z-index:5;">CLEAR</button>
+            <button onclick="undo()" style="position:absolute;top:375px;left:340px;z-index:5;">UNDO</button>
+            <div id="score" style="position:absolute;left:155px;top:370px;font-size:25px;">00%
+            </div>
+
+        </div>
     </div>
 
     <!-- Text bottom -->
-    <div style="position:absolute;top:660px;">Want more features? Drop me an email at xavier.cpy@gmail.com
-    <br>
-    Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from
-    <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+    <div style="text-align:center;"><button onclick="nextImage()">NEXT PHOTO :)</button></div>
+    <div>
+        <br><br>Want more features? Drop me an email at xavier.cpy@gmail.com
+        <br>
+        Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from
+        <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
     </div>
 
-    <div id="landscapePrompt" style="position:absolute;bottom:50px;font-size:85px;">I work better in landscape :)
-    </div>
 </body>
 <script src="./js/canvas.js"></script>
 <script src="./js/app.js"></script>
