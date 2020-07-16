@@ -104,8 +104,17 @@ function updateScore() {
             imageCounter++;
         }
     }
+    console.log(matchCounter);
 
     var percentageMatch = (matchCounter / imageCounter * 100).toFixed(0).toString();
+
+    if (percentageMatch < 0) {
+        document.getElementById('negativeScore').style.display = "block";
+    }
+    else {
+        document.getElementById('negativeScore').style.display = "none";
+    }
+
     document.getElementById("score").innerText = percentageMatch + '%';
 }
 
@@ -129,18 +138,25 @@ window.onload = function () {
     canImage.context.drawImage(imgArray[0], 50, 50)
 }
 
-// Scaling for mobile phones on portrait
-if (screen.width < 760 && window.innerHeight > window.innerWidth) {
-    document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=0.9");
-}
-if (screen.width < 361 && window.innerHeight > window.innerWidth) {
-    document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=0.7");
+
+function adjustViewport() {
+    // Scaling for mobile phones on portrait
+    if (screen.width < 760 && window.innerHeight > window.innerWidth) {
+        document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=0.9");
+    }
+    if (screen.width < 361 && window.innerHeight > window.innerWidth) {
+        document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=0.7");
+    }
+
+    // Scaling for mobile phones on landscape
+    if (screen.width < 1000 && window.innerWidth > window.innerHeight) {
+        document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=0.9");
+    }
+    if (screen.width < 680 && window.innerWidth > window.innerHeight) {
+        document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=0.7");
+    }
 }
 
-// Scaling for mobile phones on landscape
-if (screen.width < 1000 && window.innerWidth > window.innerHeight) {
-    document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=0.9");
-}
-if (screen.width < 680 && window.innerWidth > window.innerHeight) {
-    document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=0.7");
-}
+adjustViewport();
+
+window.addEventListener('orientationchange', adjustViewport);

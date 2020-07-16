@@ -13,15 +13,15 @@ A simple application to help my girlfriend Ally learn sketching.
 ### Requirements:
 1. It should provide feedback on your drawing. [DONE]
 2. It should have a grid option. [DONE]
-3. It should let you upload your own photo. [WIP]
+3. It should work cross-device [DONE]
 
 ### Demo:
 https://xavierchia.github.io/leetSketch/
 
-### Open to collaborate with:
-1. Designers
-2. Art teachers
-3. Developers
+### Reflection:
+1. App has positive response from users
+2. App would work better as native on tablet with a stylus
+3. A decent prototype can be built in 26 hours with only basic front-end tools
 
 ### Acknowledgements:
 1. Ally Le
