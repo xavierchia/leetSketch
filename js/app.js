@@ -105,7 +105,7 @@ function updateScore() {
         }
     }
 
-    var percentageMatch = (matchCounter / imageCounter * 100).toFixed(0).toString().padStart(2, '0');
+    var percentageMatch = (matchCounter / imageCounter * 100).toFixed(0).toString();
     document.getElementById("score").innerText = percentageMatch + '%';
 }
 
