@@ -43,25 +43,31 @@ function undo() {
     updateScore();
 }
 
+// Change grid color
+function gridColor(color) {
+    var tds = document.getElementsByTagName("td");
+    for (var i = 0; i < tds.length; i++) {
+        tds[i].style.borderColor = color;
+    }
+}
+
 // Level 1 traces the drawing
 function levelOne() {
     canDraw.level = 1;
-    document.getElementById("gridLeft").style.display = "table";
-    document.getElementById("gridRight").style.display = "table";
+    gridColor("black");
 }
 
 // Level 2 transfer the drawing by line
 function levelTwo() {
     canDraw.level = 2;
-    document.getElementById("gridLeft").style.display = "table";
-    document.getElementById("gridRight").style.display = "table";
+    gridColor("black");
+
 }
 
 // Level 3 toggles the grid
 function levelThree() {
     canDraw.level = 3;
-    document.getElementById("gridLeft").style.display = "none";
-    document.getElementById("gridRight").style.display = "none";
+    gridColor("transparent");
 }
 
 // Overlays current drawing to the right image and reduces opacity
