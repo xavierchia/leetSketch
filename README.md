@@ -30,7 +30,6 @@ https://xavierchia.github.io/leetSketch/
 
 ### Contact me:
 xavier.cpy@gmail.com
-:)
 
 ### License:
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
